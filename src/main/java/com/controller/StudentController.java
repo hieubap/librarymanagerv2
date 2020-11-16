@@ -3,9 +3,13 @@ package com.controller;
 import com.entity.Student;
 import com.exception.ApiRequestException;
 import com.exception.ApiRequestSuccessfull;
+import com.exportExcel.ExcelHandle;
+import com.responceEntity.EntityResponse;
 import com.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -16,14 +20,24 @@ public class StudentController{
         this.studentService = studentService;
     }
 
+    @RequestMapping(value = "/student/export", method = RequestMethod.GET)
+    public void exportExcel() throws IOException
+    {
+        ExcelHandle.excelTest();
+    }
     @RequestMapping(value = "/student/showall", method = RequestMethod.GET)
-    public List<Student> getAll() {
-        return studentService.showStudent();
+    public EntityResponse getAll()
+    {
+        EntityResponse entityResponse = new EntityResponse(200,
+                new Timestamp(System.currentTimeMillis()),"successful",studentService.showStudent());
+        return entityResponse;
     }
 
     @RequestMapping(value = "/student/id={id}", method = RequestMethod.GET)
-    public Student getById(@PathVariable Long id) {
-        return studentService.getByID(id);
+    public EntityResponse getById(@PathVariable Long id) {
+        EntityResponse entityResponse = new EntityResponse(200,
+                new Timestamp(System.currentTimeMillis()),"get ok",studentService.getByID(id));
+        return entityResponse;
     }
     @RequestMapping(value = "/student/mssv={mssv}", method = RequestMethod.GET)
     public Student getByMssv(@PathVariable String mssv) {

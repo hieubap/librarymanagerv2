@@ -15,7 +15,14 @@ public class Student {
     private String phone;
     private boolean gender;
 
+
     public Student(){}
+
+    public Student(long id, String name, String mssv) {
+        this.id = id;
+        this.name = name;
+        this.mssv = mssv;
+    }
 
     public void setAll(Student student){
         if (student.getName() != null)
