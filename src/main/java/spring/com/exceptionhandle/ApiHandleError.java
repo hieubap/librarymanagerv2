@@ -1,8 +1,8 @@
-package com.exceptionhandle;
+package spring.com.exceptionhandle;
 
-import com.exception.ApiRequestException;
-import com.exception.ApiRequestSuccessfull;
-import com.responceEntity.EntityResponse;
+import spring.com.exception.ApiRequestException;
+import spring.com.exception.ApiRequestSuccessfull;
+import spring.com.responceEntity.EntityResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

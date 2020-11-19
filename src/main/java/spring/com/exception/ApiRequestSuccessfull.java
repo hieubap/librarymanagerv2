@@ -1,4 +1,4 @@
-package com.exception;
+package spring.com.exception;
 
 public class ApiRequestSuccessfull extends RuntimeException{
     public ApiRequestSuccessfull(String message){
